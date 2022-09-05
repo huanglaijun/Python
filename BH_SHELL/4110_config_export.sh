@@ -23,8 +23,8 @@ unzip ./*.zip && rm -rf ./*.zip
 sleep 2s
 
 # 定义ftp方式传输至第三方平台的信息
-ftp -v -n 10.5.4.101 <<EOF
-user network 1qazXSW@
+ftp -v -n x.x.x.x <<EOF
+user USER PASSWORD
 binary
 lcd ${dev_path}${customer_dir}
 prompt
