@@ -83,8 +83,8 @@ mv "$dest_file" "$shell_dir"
 sleep 2s
 
 # ftp方式将压缩包传输至201服务器
-#ftp -v -n 10.16.28.201 <<EOF
-#user wangguan Passw0rd02@
+#ftp -v -n XX.XX.XX.XX <<EOF
+#user USER PASSWORD
 #binary
 #lcd $shell_dir
 #prompt
