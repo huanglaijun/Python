@@ -21,15 +21,10 @@ default_path=${AUTH_HOME}/dev_cfg/
 org_zonghang=/opt/TDS/cron_shell/config_export_to_201/org_zonghang.txt
 org_fenhang=/opt/TDS/cron_shell/config_export_to_201/org_fenhang.txt
 
-# zhwl及dir_name是单独对总行设置的变量，分行无须关注
-zhwl="总行网络"
-dir_name="配置备份"
-
 # 分行配置路径
 fenhang_dir="网管配置备份"
 fenhang_month="/$(date +%Y年%m月)网管配置备份"
 
-# 遍历org_path_list.txt中各路径，将各路径下文件解压为.conf模式，并删除zip文件，遍历后保持在default_path目录下
 while read -r line
 do
     cd "${default_path}""${line}"
@@ -39,14 +34,20 @@ do
     mv ./*.conf ${fenhang_dir}${fenhang_month}
 done < "${org_fenhang}"
 
+# zhwl及dir_name是单独对总行设置的变量，分行无须关注
+zhwl="总行网络"
+dir_name="配置备份"
+
 # 在总行网络中创建“2022年配置备份/2022年$月配置备份”格式目录
 dest_dir_year=$(date +%Y年)${dir_name}
 dest_dir_month=/$(date +%Y年%m月)${dir_name}/
 dest_dir=${dest_dir_year}${dest_dir_month}
+
 # 总行网络中创建目标格式目录
 cd ${default_path}${zhwl}
 mkdir -p "${dest_dir}"
 
+# 遍历org_zonghang.txt中各路径，将各路径下文件解压为.conf模式，并删除zip文件
 while read -r line
 do
     cd "${default_path}""${line}"
