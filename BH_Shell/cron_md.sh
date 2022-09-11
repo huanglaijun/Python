@@ -24,7 +24,7 @@ start_md(){
 del_kafka_topic(){
     /usr/bin/expect <<EOF
     set timeout 60
-    spawn ssh ismartone@10.6.10.155
+    spawn ssh ismartone@XX.XX.XX.XX
     expect "HQ-KS3-155" { send "cd /opt/TDS/kafka || exit\n" }
     expect "HQ-KS3-155" { send "bin/kafka-topics.sh --list --zookeeper HQ-ZR1-89:2181,HQ-ZR2-90:2181,HQ-ZR3-91:2181,HQ-ZR4-92:2181,HQ-ZR5-93:2181/kafka-other\n" }
     expect "HQ-KS3-155" { send "sleep 5s\n" }

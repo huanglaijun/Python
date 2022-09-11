@@ -39,3 +39,4 @@ sleep 2s
 cd ${dev_path} || exit
 rm -rf ${customer_dir}
 
+

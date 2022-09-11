@@ -16,3 +16,4 @@ sleep 2s
     echo ''
 } >> $shell_home/cron_core.log
 ps -ef | grep core | tee -a $shell_home/cron_core.log
+

@@ -11,9 +11,9 @@ check_es(){
     set timeout 60
     spawn ssh ismartone@10.6.10.83
     expect "HQ-ESM1-83" { send "cd /opt/TDS/cron_shell/cron_es\n" }
-    expect "HQ-ESM1-83" { send "curl http://10.6.10.83:9200/_cat/nodes > es_ip_now.txt\n" }
+    expect "HQ-ESM1-83" { send "curl http://XX.XX.XX.XX:9200/_cat/nodes > es_ip_now.txt\n" }
     expect "HQ-ESM1-83" { send "sleep 2s\n" }
-    expect "HQ-ESM1-83" { send "scp ./es_ip_now.txt ismartone@10.6.10.135:/opt/TDS/cron_shell/cron_es\n" }
+    expect "HQ-ESM1-83" { send "scp ./es_ip_now.txt ismartone@XX.XX.XX.XX:/opt/TDS/cron_shell/cron_es\n" }
     expect "HQ-ESM1-83" { send "sleep 2s\n" }
     expect "HQ-ESM1-83" { send "exit\n" }
     expect eof
@@ -52,7 +52,7 @@ check_master(){
     expect "HQ-ESM" { send "cd /opt/TDS/cron_shell/cron_es\n" }
     expect "HQ-ESM" { send "ps -ef | grep elasticsearch | grep -v grep | grep -v modules | wc -l > es_ip_now.txt\n" }
     expect "HQ-ESM" { send "sleep 2s\n" }
-    expect "HQ-ESM" { send "scp ./es_ip_now.txt ismartone@10.6.10.135:/opt/TDS/cron_shell/cron_es\n" }
+    expect "HQ-ESM" { send "scp ./es_ip_now.txt ismartone@XX.XX.XX.XX:/opt/TDS/cron_shell/cron_es\n" }
     expect "HQ-ESM" { send "sleep 2s\n" }
     expect "HQ-ESM" { send "exit\n" }
     expect eof

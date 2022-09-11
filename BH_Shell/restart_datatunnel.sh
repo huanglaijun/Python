@@ -48,7 +48,7 @@ EOF
 second_shutdown(){
     /usr/bin/expect <<EOF
     set timeout 60
-    spawn ssh ismartone@10.6.10.131
+    spawn ssh ismartone@XX.XX.XX.XX
     expect "SD" { send "cd $1/bin\n" }
     expect "SD" { send "ps -ef|grep datatunnel\n" }
     expect "SD" { send "./shutdown.sh\n" }
@@ -62,7 +62,7 @@ EOF
 second_start(){
     /usr/bin/expect <<EOF
     set timeout 60
-    spawn ssh ismartone@10.6.10.131
+    spawn ssh ismartone@XX.XX.XX.XX
     expect "SD" { send "cd $1/bin\n" }
     expect "SD" { send "ps -ef|grep datatunnel\n" }
     expect "SD" { send "./startup.sh\n" }

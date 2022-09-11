@@ -13,7 +13,7 @@ shell_dir="$TDS_HOME"/cron_shell/restart_summary
 restart_summary(){
     /usr/bin/expect <<EOF
     set timeout 60
-    spawn ssh ismartone@10.6.10.153
+    spawn ssh ismartone@XX.XX.XX.XX
     expect "KS1" { send "cd $1/iSmartOne-summary\n" }
     expect "KS1" { send "ps -ef|grep summary\n" }
     expect "KS1" { send "./summary.sh restart\n" }

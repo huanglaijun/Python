@@ -44,7 +44,7 @@ sleep 2s
 
 # 定义远程用户、密码、IP
 remote_user=ismartone
-passwd=
+passwd=password
 ip_file=/opt/TDS/cron_shell/ssh_askpass/ip_all.txt
 
 

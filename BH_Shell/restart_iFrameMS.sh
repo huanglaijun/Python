@@ -13,7 +13,7 @@ shell_dir="$TDS_HOME"/cron_shell/restart_iFrameMS
 restart_iFrameMS(){
     /usr/bin/expect <<EOF
     set timeout 60
-    spawn ssh ismartone@10.6.10.138
+    spawn ssh ismartone@XX.XX.XX.XX
     expect "IF1" { send "cd $1\n" }
     expect "IF1" { send "ps -ef|grep iFrameMS\n" }
     expect "IF1" { send "./iSmartOne.sh restart\n" }
