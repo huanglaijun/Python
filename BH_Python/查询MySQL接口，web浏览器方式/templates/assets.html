@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>show</title>
+    <link rel="stylesheet" href="/static/css/bootstrap.css">
+</head>
+
+<body>
+    <!-- style="width: 600px;margin: 100px auto;" -->
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">DEVICEID</th>
+                <th scope="col">VENDORID</th>
+                <th scope="col">CIID</th>
+                <th scope="col">ASSETSNO</th>
+                <th scope="col">MGNTSTATUS</th>
+                <th scope="col">SERIESKEY</th>
+                <th scope="col">VENDORKEY</th>
+                <th scope="col">VENDORCLASSIFYID</th>
+                <th scope="col">MODEL</th>
+                <th scope="col">VENDORCLASSIFYKEY</th>
+                <th scope="col">CIKEY</th>
+                <th scope="col">MODELID</th>
+                <th scope="col">SERIESID</th>
+                <th scope="col">ORGINFO</th>
+                <th scope="col">MGNTINFO</th>
+                <th scope="col">DESCRIPTION</th>
+                <th scope="col">SERIAL</th>
+                <th scope="col">SERIALKEY</th>
+                <th scope="col">MEMORY</th>
+                <th scope="col">MEMORYKEY</th>
+                <th scope="col">CARD</th>
+                <th scope="col">ASSETSINFO</th>
+                <th scope="col">SYSOBJECTID</th>
+                <th scope="col">SOFTVERSIO</th>
+                <th scope="col">ORGID</th>
+                <th scope="col">NODEPATH</th>
+                <th scope="col">USERID</th>
+                <th scope="col">USERNAME</th>
+                <th scope="col">OFFLINETIME</th>
+                <th scope="col">TENANTID</th>
+                <th scope="col">FTL</th>
+                <th scope="col">NETVENDORNAME</th>
+                <th scope="col">NETMODEL</th>
+                <th scope="col">ISCASE</th>
+                <th scope="col">MARANK</th>
+                <th scope="col">MAENDDATE</th>
+                <th scope="col">RMAUPDATED</th>
+                <th scope="col">MGNTIP</th>
+                <th scope="col">DEVICENAME</th>
+                <th scope="col">LASTTIME </th>
+                <th scope="col">NETCIID</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <!-- jinja2语法 -->
+            {% for u in assets %}
+            <tr>
+                <td>{{ u[0] }}</td>
+                <td>{{ u[1] }}</td>
+                <td>{{ u[2] }}</td>
+                <td>{{ u[3] }}</td>
+                <td>{{ u[4] }}</td>
+                <td>{{ u[5] }}</td>
+                <td>{{ u[6] }}</td>
+                <td>{{ u[7] }}</td>
+                <td>{{ u[8] }}</td>
+                <td>{{ u[9] }}</td>
+                <td>{{ u[10] }}</td>
+                <td>{{ u[11] }}</td>
+                <td>{{ u[12] }}</td>
+                <td>{{ u[13] }}</td>
+                <td>{{ u[14] }}</td>
+                <td>{{ u[15] }}</td>
+                <td>{{ u[16] }}</td>
+                <td>{{ u[17] }}</td>
+                <td>{{ u[18] }}</td>
+                <td>{{ u[19] }}</td>
+                <td>{{ u[20] }}</td>
+                <td>{{ u[21] }}</td>
+                <td>{{ u[22] }}</td>
+                <td>{{ u[23] }}</td>
+                <td>{{ u[24] }}</td>
+                <td>{{ u[25] }}</td>
+                <td>{{ u[26] }}</td>
+                <td>{{ u[27] }}</td>
+                <td>{{ u[28] }}</td>
+                <td>{{ u[29] }}</td>
+                <td>{{ u[30] }}</td>
+                <td>{{ u[31] }}</td>
+                <td>{{ u[32] }}</td>
+                <td>{{ u[33] }}</td>
+                <td>{{ u[34] }}</td>
+                <td>{{ u[35] }}</td>
+                <td>{{ u[36] }}</td>
+                <td>{{ u[37] }}</td>
+                <td>{{ u[38] }}</td>
+                <td>{{ u[39] }}</td>
+                <td>{{ u[40] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <!-- <div class="container" style="width: 600px;margin: 200px auto;">
+        <div class="row">
+            <div class="col-4">
+                <a href="/add">新增学员信息</a>
+            </div>
+        </div>
+    </div> -->
+</body>
+
+</html>
