@@ -1,4 +1,4 @@
-
+# -*- coding: utf-8 -*- 
 import pandas as pd
 import pymysql
 from flask import Flask, render_template, request, redirect
@@ -75,4 +75,4 @@ def show_md():
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(host='0.0.0.0')
