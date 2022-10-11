@@ -22,6 +22,7 @@
         </div>
         <button type="submit" class="btn btn-primary">查询</button>
         <!-- <a class="btn btn-success" href="/export" role="button" onclick="getAll()">导出</a> -->
+		<button type="button" onclick="tableToExcel('item','导出列表')" class="btn btn-info">导出</button>
     </form>
 
     <!-- <script>
@@ -31,7 +32,7 @@
             return name
         }
     </script> -->
-    <table class="table  table-hover">
+    <table class="table  table-hover" id="item">
         <thead class="table-success">
             <tr>
                 <th scope="col" style="width: 80px;">姓名</th>
@@ -59,5 +60,26 @@
         </tbody>
     </table>
 </body>
+<script type="text/javascript">
+        function base64 (content) {
+       return window.btoa(unescape(encodeURIComponent(content)));
+    }
+
+    function tableToExcel(tableID,fileName){
+        var table = document.getElementById(tableID);
+      var excelContent = table.innerHTML;
+      var excelFile = "<html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:x='urn:schemas-microsoft-com:office:excel' xmlns='http://www.w3.org/TR/REC-html40'>";
+      excelFile += "<head><!--[if gte mso 9]><xml><x:ExcelWorkbook><x:ExcelWorksheets><x:ExcelWorksheet><x:Name>{worksheet}</x:Name><x:WorksheetOptions><x:DisplayGridlines/></x:WorksheetOptions></x:ExcelWorksheet></x:ExcelWorksheets></x:ExcelWorkbook></xml><![endif]--></head>";
+      excelFile += "<body><table>";
+      excelFile += excelContent;
+      excelFile += "</table></body>";
+      excelFile += "</html>";
+      var link = "data:application/vnd.ms-excel;base64," + base64(excelFile);
+      var a = document.createElement("a");
+      a.download = fileName+".xls";
+      a.href = link;
+      a.click();
+    }
+    </script>
 
 </html>
