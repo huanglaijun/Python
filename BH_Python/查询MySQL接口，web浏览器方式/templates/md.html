@@ -25,13 +25,27 @@
         <button type="button" onclick="tableToExcel('item','导出列表')" class="btn btn-info">导出</button>
     </form>
 
-    <!-- <script>
-        function getAll(){
-            name=document.getElementsByName("username");
-            phone=document.getElementsByName("phone")
-            return name
-        }
-    </script> -->
+    <!-- 分页按钮 -->
+    <!-- 暂未实现 -->
+    <!-- <nav aria-label="Page navigation example">
+        <ul class="pagination">
+            <li class="page-item">
+                <a class="page-link" href="#" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+            <li class="page-item"><a class="page-link" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item">
+                <a class="page-link" href="#" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+        </ul>
+    </nav> -->
+
+    <!-- 数据展示 -->
     <table class="table  table-hover" id="item">
         <thead class="table-success">
             <tr>
@@ -59,8 +73,10 @@
             {% endfor %}
         </tbody>
     </table>
+
 </body>
 
+<!-- 导出按钮逻辑 -->
 <script type="text/javascript">
     function base64(content) {
         return window.btoa(unescape(encodeURIComponent(content)));

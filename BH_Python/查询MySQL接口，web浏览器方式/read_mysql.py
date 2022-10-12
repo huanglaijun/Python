@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*- 
+# -*- coding: utf-8 -*-
 import pandas as pd
 import pymysql
 from flask import Flask, render_template, request, redirect
@@ -19,9 +19,10 @@ def search_mysql(name, phone):
         port=3306
     )
     cur = dbconn.cursor()
+    # sql语句查询1000条结果
     sql = "select * from t_evt_sent_sms WHERE NAME LIKE " + '"' +\
         name + '"' + " AND PHONE LIKE " + '"' + \
-        phone+'"' + " order by LASTSENDTIME desc;"
+        phone+'"' + " order by LASTSENDTIME desc limit 1000;"
     print(sql)
     cur.execute(sql)
     md = cur.fetchall()
@@ -71,7 +72,6 @@ def show_md():
         return render_template('md.html', md=search_mysql(name, phone))
     else:
         return render_template('md.html', md=search_mysql("%", "%"))
-
 
 
 if __name__ == '__main__':
