@@ -45,7 +45,6 @@ def read_mysql_assets(assetsno, serial):
         port=3306
     )
     cur = dbconn.cursor()
-    # sql语句查询十万条结果
     sql = "select * from t_assets_offline WHERE ASSETSNO LIKE " + '"' +\
         assetsno + '"' + " AND SERIAL LIKE " + '"' + \
         serial+'"' + ";"
