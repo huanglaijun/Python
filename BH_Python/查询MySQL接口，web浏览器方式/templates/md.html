@@ -21,29 +21,14 @@
             <input type="tel" class="form-control" id="exampleInputPassword3" placeholder="电话" name="phone">
         </div>
         <button type="submit" class="btn btn-primary">查询</button>
-        <!-- <a class="btn btn-success" href="/export" role="button" onclick="getAll()">导出</a> -->
         <button type="button" onclick="tableToExcel('item','导出列表')" class="btn btn-info">导出</button>
+        <a class="btn btn-Success" href="/" role="button">返回导航页</a>
     </form>
 
-    <!-- 分页按钮 -->
-    <!-- 暂未实现 -->
-    <!-- <nav aria-label="Page navigation example">
-        <ul class="pagination">
-            <li class="page-item">
-                <a class="page-link" href="#" aria-label="Previous">
-                    <span aria-hidden="true">&laquo;</span>
-                </a>
-            </li>
-            <li class="page-item"><a class="page-link" href="#">1</a></li>
-            <li class="page-item"><a class="page-link" href="#">2</a></li>
-            <li class="page-item"><a class="page-link" href="#">3</a></li>
-            <li class="page-item">
-                <a class="page-link" href="#" aria-label="Next">
-                    <span aria-hidden="true">&raquo;</span>
-                </a>
-            </li>
-        </ul>
-    </nav> -->
+    <!-- 展示程序传递过来的md原始数据样式 -->
+    <!-- {% block content %}
+    {{ md }}
+    {% endblock %} -->
 
     <!-- 数据展示 -->
     <table class="table  table-hover" id="item">
