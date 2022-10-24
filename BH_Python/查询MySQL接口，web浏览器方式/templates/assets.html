@@ -3,13 +3,29 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>show</title>
-    <link rel="stylesheet" href="/static/css/bootstrap.css">
+    <title>数据库数据展示</title>
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+    <script type="text/javascript" src="/static/jquery-3.6.1.min.js"></script>
+    <script type="text/javascript" src="/static/js/bootstrap.min.js"></script>
 </head>
 
 <body>
-    <!-- style="width: 600px;margin: 100px auto;" -->
-    <table class="table">
+    <!-- 表单提交方式method="post"一定要写 -->
+    <form class="form-inline" method="post" id="formId">
+        <div class="form-group">
+            <label class="sr-only" for="exampleInputEmail3">资产编号</label>
+            <input type="text" class="form-control" id="exampleInputEmail3" placeholder="资产编号" name="assetsno">
+        </div>
+        <div class="form-group">
+            <label class="sr-only" for="exampleInputPassword3">序列号</label>
+            <input type="tel" class="form-control" id="exampleInputPassword3" placeholder="序列号" name="serial">
+        </div>
+        <button type="submit" class="btn btn-primary">查询</button>
+        <button type="button" onclick="tableToExcel('item','导出列表')" class="btn btn-info">导出</button>
+        <a class="btn btn-Success" href="/" role="button">返回导航页</a>
+    </form>
+
+    <table class="table" id="item">
         <thead>
             <tr>
                 <th scope="col">DEVICEID</th>
@@ -105,13 +121,30 @@
             {% endfor %}
         </tbody>
     </table>
-    <!-- <div class="container" style="width: 600px;margin: 200px auto;">
-        <div class="row">
-            <div class="col-4">
-                <a href="/add">新增学员信息</a>
-            </div>
-        </div>
-    </div> -->
+  
 </body>
+
+<!-- 导出按钮逻辑 -->
+<script type="text/javascript">
+    function base64(content) {
+        return window.btoa(unescape(encodeURIComponent(content)));
+    }
+
+    function tableToExcel(tableID, fileName) {
+        var table = document.getElementById(tableID);
+        var excelContent = table.innerHTML;
+        var excelFile = "<html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:x='urn:schemas-microsoft-com:office:excel' xmlns='http://www.w3.org/TR/REC-html40'>";
+        excelFile += "<head><!--[if gte mso 9]><xml><x:ExcelWorkbook><x:ExcelWorksheets><x:ExcelWorksheet><x:Name>{worksheet}</x:Name><x:WorksheetOptions><x:DisplayGridlines/></x:WorksheetOptions></x:ExcelWorksheet></x:ExcelWorksheets></x:ExcelWorkbook></xml><![endif]--></head>";
+        excelFile += "<body><table>";
+        excelFile += excelContent;
+        excelFile += "</table></body>";
+        excelFile += "</html>";
+        var link = "data:application/vnd.ms-excel;base64," + base64(excelFile);
+        var a = document.createElement("a");
+        a.download = fileName + ".xls";
+        a.href = link;
+        a.click();
+    }
+</script>
 
 </html>

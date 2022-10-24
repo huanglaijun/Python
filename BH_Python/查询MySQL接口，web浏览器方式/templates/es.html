@@ -14,17 +14,12 @@
     <form class="form-inline" method="post" id="formId">
         <div class="form-group">
             <label class="sr-only" for="exampleInputEmail3">索引</label>
-            <input type="text" class="form-control" id="exampleInputEmail3" placeholder="索引" name="index">
+            <input type="text" class="form-control" id="exampleInputEmail3" placeholder="此页面仅支持ausdata_iso_eventdata索引" name="index">
         </div>
-        <!-- <div class="form-group">
-            <label class="sr-only" for="exampleInputPassword3">电话</label>
-            <input type="tel" class="form-control" id="exampleInputPassword3" placeholder="电话" name="phone">
-        </div> -->
         <button type="submit" class="btn btn-primary">查询</button>
         <button type="button" onclick="tableToExcel('item','导出列表')" class="btn btn-info">导出</button>
         <a class="btn btn-Success" href="/" role="button">返回导航页</a>
     </form>
-
     <!-- {% block content %}
     {{ data }}
     {% endblock %} -->
@@ -33,76 +28,76 @@
         <thead class="table-success">
             <tr>
                 <th scope="col" style="width: 100px;">设备IP</th>
+                <th scope="col" style="width: 80px;">LINENAME</th>
                 <th scope="col" style="width: 80px;">KPI</th>
-                <th scope="col" style="width: 80px;">TENANTID</th>
+                <th scope="col" style="width: 80px;">KPIVALUE</th>
+                <!-- <th scope="col" style="width: 80px;">TENANTID</th>
                 <th scope="col" style="width: 80px;">FAULTREASONIDS</th>
                 <th scope="col" style="width: 80px;">FAULTIMPACT</th>
                 <th scope="col" style="width: 80px;">VIPPORT</th>
                 <th scope="col" style="width: 80px;">COLLECTORHOSTNAME</th>
                 <th scope="col" style="width: 80px;">IPALIAS</th>
-                <th scope="col" style="width: 80px;">DEVID</th>
-                <th scope="col" style="width: 80px;">SUMMARYZNYW</th>
-                <th scope="col" style="width: 80px;">FAILOVERDEVUSAGE</th>
+                <th scope="col" style="width: 80px;">DEVID</th> -->
+                <!-- <th scope="col" style="width: 180px;">SUMMARYZNYW</th> -->
+                <!-- <th scope="col" style="width: 80px;">FAILOVERDEVUSAGE</th> -->
                 <th scope="col" style="width: 80px;">SUMMARY</th>
-                <th scope="col" style="width: 80px;">ISCLOSED</th>
-                <th scope="col" style="width: 80px;">STATECHANGE</th>
-                <th scope="col" style="width: 80px;">EVENTSUBTYPE</th>
-                <th scope="col" style="width: 80px;">KPIVALUE</th>
-                <th scope="col" style="width: 80px;">ACKUSERNAME</th>
-                <th scope="col" style="width: 80px;">TYPE</th>
-                <th scope="col" style="width: 80px;">RESOURCEID</th>
-                <th scope="col" style="width: 80px;">LASTOCCURRENCE</th>
-                <th scope="col" style="width: 80px;">MATCHSTATUS</th>
-                <th scope="col" style="width: 80px;">URLREMARKS</th>
+                <th scope="col" style="width: 100px;">ISCLOSED</th>
+                <!-- <th scope="col" style="width: 80px;">STATECHANGE</th>
+                <th scope="col" style="width: 80px;">EVENTSUBTYPE</th> -->
+                <!-- <th scope="col" style="width: 80px;">ACKUSERNAME</th> -->
+                <!-- <th scope="col" style="width: 80px;">TYPE</th> -->
+                <!-- <th scope="col" style="width: 80px;">RESOURCEID</th> -->
+                <th scope="col" style="width: 180px;">LASTOCCURENCE</th>
+                <!-- <th scope="col" style="width: 80px;">MATCHSTATUS</th>
+                <th scope="col" style="width: 80px;">URLREMARKS</th> -->
                 <th scope="col" style="width: 80px;">PORTDESCRIBE</th>
-                <th scope="col" style="width: 80px;">IFIP</th>
-                <th scope="col" style="width: 80px;">SERVICESEVERITY</th>
+                <!-- <th scope="col" style="width: 80px;">IFIP</th>
+                <th scope="col" style="width: 80px;">SERVICESEVERITY</th> -->
                 <th scope="col" style="width: 80px;">ACKTIME</th>
                 <th scope="col" style="width: 80px;">LOCALACCESSPOINT</th>
                 <th scope="col" style="width: 80px;">OPPADDRESS</th>
-                <th scope="col" style="width: 80px;">EVENTID</th>
+                <!-- <th scope="col" style="width: 80px;">EVENTID</th>
                 <th scope="col" style="width: 80px;">DOWNTIME</th>
                 <th scope="col" style="width: 80px;">URLALIAS</th>
                 <th scope="col" style="width: 80px;">FLASH</th>
-                <th scope="col" style="width: 80px;">FAULTIMPACTID</th>
+                <th scope="col" style="width: 80px;">FAULTIMPACTID</th> -->
                 <th scope="col" style="width: 80px;">KPICH</th>
                 <th scope="col" style="width: 80px;">EVENTTYPE</th>
                 <th scope="col" style="width: 80px;">SOURCE</th>
-                <th scope="col" style="width: 80px;">HITRULES</th>
-                <th scope="col" style="width: 80px;">FIRSTOCCURRENCE</th>
-                <th scope="col" style="width: 80px;">LOCALNUMBER</th>
+                <!-- <th scope="col" style="width: 80px;">HITRULES</th> -->
+                <th scope="col" style="width: 80px;">FIRSTOCCURENCE</th>
+                <!-- <th scope="col" style="width: 80px;">LOCALNUMBER</th> -->
                 <th scope="col" style="width: 80px;">SEVERITY</th>
-                <th scope="col" style="width: 80px;">ORIGINALSEVERITY</th>
+                <!-- <th scope="col" style="width: 80px;">ORIGINALSEVERITY</th>
                 <th scope="col" style="width: 80px;">LOCALDEVPORT</th>
-                <th scope="col" style="width: 80px;">ASSETSTYPE</th>
+                <th scope="col" style="width: 80px;">ASSETSTYPE</th> -->
                 <th scope="col" style="width: 80px;">OPERATORPHONE</th>
                 <th scope="col" style="width: 80px;">ORGNAME</th>
-                <th scope="col" style="width: 80px;">TCPREMARKS</th>
+                <!-- <th scope="col" style="width: 80px;">TCPREMARKS</th>
                 <th scope="col" style="width: 80px;">TCPALIAS</th>
                 <th scope="col" style="width: 80px;">OPERATORAPAIRPHONE</th>
                 <th scope="col" style="width: 80px;">EVENTCLASS</th>
-                <th scope="col" style="width: 80px;">IDENTIFIER</th>
+                <th scope="col" style="width: 80px;">IDENTIFIER</th> -->
                 <th scope="col" style="width: 80px;">LINENUMBER</th>
                 <th scope="col" style="width: 80px;">LOCALDEVNAME</th>
-                <th scope="col" style="width: 80px;">ARCHIVEUSERNAME</th>
-                <th scope="col" style="width: 80px;">ARCHIVETIME</th>
-                <th scope="col" style="width: 80px;">COLLECTORIPADDR</th>
-                <th scope="col" style="width: 80px;">ISMAINTAIN</th>
-                <th scope="col" style="width: 80px;">FAULTREASON</th>
-                <th scope="col" style="width: 80px;">ACKNOWLEDGED</th>
+                <th scope="col" style="width: 80px;">ACKUSER</th>
+                <th scope="col" style="width: 80px;">ACKTIME</th>
+                <!-- <th scope="col" style="width: 80px;">COLLECTORIPADDR</th> -->
+                <th scope="col" style="width: 80px;">ISMATAIN</th>
+                <!-- <th scope="col" style="width: 80px;">FAULTREASON</th> -->
+                <!-- <th scope="col" style="width: 80px;">ACKNOWLEDGED</th> -->
                 <th scope="col" style="width: 80px;">DEVICENAME</th>
                 <th scope="col" style="width: 80px;">ALERTKEY</th>
                 <th scope="col" style="width: 80px;">OPTLOG</th>
-                <th scope="col" style="width: 80px;">ORGPATH</th>
+                <!-- <th scope="col" style="width: 80px;">ORGPATH</th> -->
                 <th scope="col" style="width: 80px;">ALERTGROUP</th>
                 <th scope="col" style="width: 80px;">TALLY</th>
-                <th scope="col" style="width: 80px;">LINENAME</th>
-                <th scope="col" style="width: 80px;">OPERATORCONTACT</th>
+                <!-- <th scope="col" style="width: 80px;">OPERATORCONTACT</th>
                 <th scope="col" style="width: 80px;">SOURCEISMARTONE</th>
                 <th scope="col" style="width: 80px;">IPREMARKS</th>
                 <th scope="col" style="width: 80px;">OPPCONTACTPHONE</th>
                 <th scope="col" style="width: 80px;">VENDOR</th>
-                <th scope="col" style="width: 80px;">OPPCONTACT</th>
+                <th scope="col" style="width: 80px;">OPPCONTACT</th> -->
             </tr>
         </thead>
 
@@ -110,77 +105,77 @@
             {% for d in data %}
             <tr>
                 <td>{{ d[0] }}</td>
+                <td>{{ d[64] }}</td>
                 <td>{{ d[1] }}</td>
-                <td>{{ d[2] }}</td>
+                <td>{{ d[16] }}</td>
+                <!-- <td>{{ d[2] }}</td>
                 <td>{{ d[3] }}</td>
                 <td>{{ d[4] }}</td>
                 <td>{{ d[5] }}</td>
                 <td>{{ d[6] }}</td>
                 <td>{{ d[7] }}</td>
-                <td>{{ d[8] }}</td>
-                <td>{{ d[9] }}</td>
-                <td>{{ d[10] }}</td>
+                <td>{{ d[8] }}</td> -->
+                <!-- <td>{{ d[9] }}</td> -->
+                <!-- <td>{{ d[10] }}</td> -->
                 <td>{{ d[11] }}</td>
                 <td>{{ d[12] }}</td>
-                <td>{{ d[13] }}</td>
-                <td>{{ d[14] }}</td>
-                <td>{{ d[15] }}</td>
-                <td>{{ d[16] }}</td>
-                <td>{{ d[17] }}</td>
-                <td>{{ d[18] }}</td>
+                <!-- <td>{{ d[13] }}</td>
+                <td>{{ d[14] }}</td> -->
+                <!-- <td>{{ d[15] }}</td> -->
+                <!-- <td>{{ d[17] }}</td> -->
+                <!-- <td>{{ d[18] }}</td> -->
                 <td>{{ d[19] }}</td>
-                <td>{{ d[20] }}</td>
-                <td>{{ d[21] }}</td>
+                <!-- <td>{{ d[20] }}</td>
+                <td>{{ d[21] }}</td> -->
                 <td>{{ d[22] }}</td>
-                <td>{{ d[23] }}</td>
-                <td>{{ d[24] }}</td>
+                <!-- <td>{{ d[23] }}</td>
+                <td>{{ d[24] }}</td> -->
                 <td>{{ d[25] }}</td>
                 <td>{{ d[26] }}</td>
                 <td>{{ d[27] }}</td>
-                <td>{{ d[28] }}</td>
+                <!-- <td>{{ d[28] }}</td>
                 <td>{{ d[29] }}</td>
                 <td>{{ d[30] }}</td>
                 <td>{{ d[31] }}</td>
-                <td>{{ d[32] }}</td>
+                <td>{{ d[32] }}</td> -->
                 <td>{{ d[33] }}</td>
                 <td>{{ d[34] }}</td>
                 <td>{{ d[35] }}</td>
-                <td>{{ d[36] }}</td>
+                <!-- <td>{{ d[36] }}</td> -->
                 <td>{{ d[37] }}</td>
-                <td>{{ d[38] }}</td>
+                <!-- <td>{{ d[38] }}</td> -->
                 <td>{{ d[39] }}</td>
-                <td>{{ d[40] }}</td>
+                <!-- <td>{{ d[40] }}</td>
                 <td>{{ d[41] }}</td>
-                <td>{{ d[42] }}</td>
+                <td>{{ d[42] }}</td> -->
                 <td>{{ d[43] }}</td>
                 <td>{{ d[44] }}</td>
-                <td>{{ d[45] }}</td>
+                <!-- <td>{{ d[45] }}</td>
                 <td>{{ d[46] }}</td>
                 <td>{{ d[47] }}</td>
                 <td>{{ d[48] }}</td>
-                <td>{{ d[49] }}</td>
+                <td>{{ d[49] }}</td> -->
                 <td>{{ d[50] }}</td>
                 <td>{{ d[51] }}</td>
                 <td>{{ d[52] }}</td>
                 <td>{{ d[53] }}</td>
-                <td>{{ d[54] }}</td>
+                <!-- <td>{{ d[54] }}</td> -->
                 <td>{{ d[55] }}</td>
-                <td>{{ d[56] }}</td>
-                <td>{{ d[57] }}</td>
+                <!-- <td>{{ d[56] }}</td>
+                <td>{{ d[57] }}</td> -->
                 <td>{{ d[58] }}</td>
                 <td>{{ d[59] }}</td>
                 <td>{{ d[60] }}</td>
-                <td>{{ d[61] }}</td>
+                <!-- <td>{{ d[61] }}</td> -->
                 <td>{{ d[62] }}</td>
                 <td>{{ d[63] }}</td>
-                <td>{{ d[64] }}</td>
-                <td>{{ d[65] }}</td>
+                <!-- <td>{{ d[65] }}</td>
                 <td>{{ d[66] }}</td>
                 <td>{{ d[67] }}</td>
                 <td>{{ d[68] }}</td>
                 <td>{{ d[69] }}</td>
                 <td>{{ d[70] }}</td>
-                <td>{{ d[71] }}</td>
+                <td>{{ d[71] }}</td> -->
             </tr>
             {% endfor %}
         </tbody>
