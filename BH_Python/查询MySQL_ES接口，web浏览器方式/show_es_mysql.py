@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
-import pandas as pd
+import json
+from msilib.schema import PatchPackage
 import pymysql
 import time
 from elasticsearch import Elasticsearch
@@ -47,15 +48,52 @@ def read_mysql_assets(assetsno, serial):
     cur = dbconn.cursor()
     sql = "select * from t_assets_offline WHERE ASSETSNO LIKE " + '"' +\
         assetsno + '"' + " AND SERIAL LIKE " + '"' + \
-        serial+'"' + ";"
+        serial+'"' + " AND NODEPATH LIKE '%/2/1095846/%';"
     print(sql)
     cur.execute(sql)
-    assets = cur.fetchall()
+    asset = cur.fetchall()
     dbconn.close()
-    # 管理信息对应关系
-    # {"f14E58D4C7A6FE909": "hlj-管理信息测试-可删除此处填写", 
-    # "fF6879B6EF3A00FE7": "总部数据中心"}   设备别名 数据中心
 
+    # 对MySQL取回的原始数据样式为(('思科','{"orgName": "10837"}','{"f001CA043BFACBA6A": "",此段为管理信息json}'),(每一个元组为一条资产记录),())
+    # 需将(('a1', 'b1', '{"k1": "v1","k2": "v2","k3":"","k4":""}', 'd1'), ('a2', 'b2', '{"k5": "v5","k6": "v6","k7":"","k8":""}', 'd2'))
+    # 转化为：(('a1', 'b1', 'd1', 'v1', 'v2', '', ''),('a2', 'b2', 'v5', 'v6', '', ''))
+    # 其中MGNTINFO字段存储的信息为管理信息，将管理信息提取出来展开至新数据队列，原MGNTINFO字段删除
+    # 最终将t_assets_offline数据表中内容全部展开，数据中无json格式信息，达到基本信息和管理信息都在表columns中
+    # -------------
+    # 先将sql查询结果
+    # 由(('a1', 'b1', '{"k1": "v1","k2": "v2","k3":"","k4":""}', 'd1'), ('a2', 'b2', '{"k5": "v5","k6": "v6","k7":"","k8":""}', 'd2'))
+    # ->[('a1', 'b1', '{"k1": "v1","k2": "v2","k3":"","k4":""}', 'd1'), ('a2', 'b2', '{"k5": "v5","k6": "v6","k7":"","k8":""}', 'd2')]
+    src_list = list(asset)
+    # 定义最终assets结果列表
+    assets_list = []
+    # 由[('a1', 'b1', '{"k1": "v1","k2": "v2","k3":"","k4":""}', 'd1'), ('a2', 'b2', '{"k5": "v5","k6": "v6","k7":"","k8":""}', 'd2')]
+    # ->[['a1', 'b1', '{"k1": "v1","k2": "v2","k3":"","k4":""}],['a2', 'b2', '{"k5": "v5","k6": "v6","k7":"","k8":""}', 'd2']]
+    for i in range(0, len(src_list)):
+        # 对列表的每一个元素遍历，并把管理信息value值取出,删除原MGNTINFO、ASSETSINFO字段
+        # 由[['a1', 'b1', '{"k1": "v1","k2": "v2","k3":"","k4":""}],['a2', 'b2', '{"k5": "v5","k6": "v6","k7":"","k8":""}', 'd2']]
+        # ->[['a1', 'b1', 'v1', 'v2', '', ''],['a2', 'b2', 'v5', 'v6', '', '']]
+        # 最终样式为(('a1', 'b1', 'd1', 'v1', 'v2', '', ''),('a2', 'b2', 'v5', 'v6', '', ''))
+        # 将list中每个元组转换为list
+        src_item_list = list(src_list[i])
+        # 管理信息虽为json格式，但却是str类型，需转为dict
+        dict_mgntinfo = json.loads(src_item_list[14])
+        # 取管理信息value值添加至src_mgntinfo_list
+        src_mgntinfo_list = []
+        for k, v in dict_mgntinfo.items():
+            src_mgntinfo_list.append(v)
+        # 删除原MGNTINFO
+        src_item_list.pop(14)
+        # 删除原ASSETSINFO
+        src_item_list.pop(20)
+        #
+        # 基本信息和管理信息拼接
+        src_to_list = src_item_list+src_mgntinfo_list
+        # 基本信息和管理信息list转为tuple
+        src_to_tuple = tuple(src_to_list)
+        # 每个结果放进定义最终assets结果列表
+        assets_list.append(src_to_tuple)
+    # 最终assets需由list转为tuple
+    assets = tuple(assets_list)
     return assets
 
 
@@ -171,23 +209,39 @@ def show_es():
 
 
 @app.route('/md', methods=['GET', 'POST'])
-# 查询短信发送记录
+# 查询所有短信发送记录
 def show_md():
     if request.method == 'POST':
         name = request.form.get("username")
         phone = request.form.get("phone")
-        # 判断name和Phone是否有输入，无输入则置为%
-        if name.strip() == "":
+        # # 判断name和Phone是否有输入，无输入则置为%
+        # if name.strip() == "":
+        #     name = "%"
+        # else:
+        #     name = name
+        # if phone.strip() == "":
+        #     phone = "%"
+        # else:
+        #     phone = phone
+        # return render_template('md.html', md=read_mysql_md(name, phone))
+
+        # 只输入姓名时
+        if name.strip() != "" and phone.strip() == "":
+            name = name
+            phone = "%"
+            return render_template('md.html', md=read_mysql_md(name, phone))
+        # 只输入手机号时
+        elif name.strip() == "" and phone.strip() != "":
             name = "%"
+            phone = phone
+            return render_template('md.html', md=read_mysql_md(name, phone))
+        # 手机号和姓名均输入时
         else:
             name = name
-        if phone.strip() == "":
-            phone = "%"
-        else:
             phone = phone
-        return render_template('md.html', md=read_mysql_md(name, phone))
+            return render_template('md.html', md=read_mysql_md(name, phone))
     else:
-        return render_template('md.html', md=read_mysql_md("%", "%"))
+        return render_template('md.html', md=read_mysql_md("#", "#"))
 
 
 if __name__ == '__main__':

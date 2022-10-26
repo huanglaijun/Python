@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>数据库数据展示</title>
+    <title>网络资产数据展示</title>
     <link rel="stylesheet" href="/static/css/bootstrap.min.css">
     <script type="text/javascript" src="/static/jquery-3.6.1.min.js"></script>
     <script type="text/javascript" src="/static/js/bootstrap.min.js"></script>
@@ -25,26 +25,31 @@
         <a class="btn btn-Success" href="/" role="button">返回导航页</a>
     </form>
 
+    <!-- 展示程序传递过来的assets原始数据样式 -->
+    <!-- {% block content %}
+    {{ assets }}
+    {% endblock %} -->
+
     <table class="table" id="item">
         <thead>
             <tr>
-                <th scope="col">DEVICEID</th>
-                <th scope="col">VENDORID</th>
-                <th scope="col">CIID</th>
-                <th scope="col">ASSETSNO</th>
-                <th scope="col">MGNTSTATUS</th>
-                <th scope="col">SERIESKEY</th>
-                <th scope="col">VENDORKEY</th>
-                <th scope="col">VENDORCLASSIFYID</th>
-                <th scope="col">MODEL</th>
-                <th scope="col">VENDORCLASSIFYKEY</th>
+                <!-- <th scope="col">DEVICEID</th> -->
+                <!-- <th scope="col">VENDORID</th>
+                <th scope="col">CIID</th> -->
+                <th scope="col">资产编号</th>
+                <th scope="col">序列号</th>
+                <!-- <th scope="col">MGNTSTATUS</th> -->
+                <th scope="col">厂商</th>
                 <th scope="col">CIKEY</th>
-                <th scope="col">MODELID</th>
+                <!-- <th scope="col">VENDORCLASSIFYID</th> -->
+                <th scope="col">MODEL</th>
+                <th scope="col">SERIESKEY</th>
+                <th scope="col">VENDORCLASSIFYKEY</th>
+                <!-- <th scope="col">MODELID</th>
                 <th scope="col">SERIESID</th>
-                <th scope="col">ORGINFO</th>
-                <th scope="col">MGNTINFO</th>
-                <th scope="col">DESCRIPTION</th>
-                <th scope="col">SERIAL</th>
+                <th scope="col">ORGINFO</th> -->
+                <th scope="col">备注</th>
+                <!-- <th scope="col">SERIAL</th>
                 <th scope="col">SERIALKEY</th>
                 <th scope="col">MEMORY</th>
                 <th scope="col">MEMORYKEY</th>
@@ -52,23 +57,40 @@
                 <th scope="col">ASSETSINFO</th>
                 <th scope="col">SYSOBJECTID</th>
                 <th scope="col">SOFTVERSIO</th>
-                <th scope="col">ORGID</th>
-                <th scope="col">NODEPATH</th>
-                <th scope="col">USERID</th>
+                <th scope="col">ORGID</th> -->
+                <th scope="col">操作用户</th>
+                <!-- <th scope="col">USERID</th>
                 <th scope="col">USERNAME</th>
-                <th scope="col">OFFLINETIME</th>
                 <th scope="col">TENANTID</th>
-                <th scope="col">FTL</th>
-                <th scope="col">NETVENDORNAME</th>
-                <th scope="col">NETMODEL</th>
-                <th scope="col">ISCASE</th>
-                <th scope="col">MARANK</th>
+                <th scope="col">FTL</th> -->
+                <!-- <th scope="col">NETVENDORNAME</th>
+                <th scope="col">NETMODEL</th> -->
+                <!-- <th scope="col">MARANK</th>
                 <th scope="col">MAENDDATE</th>
-                <th scope="col">RMAUPDATED</th>
-                <th scope="col">MGNTIP</th>
-                <th scope="col">DEVICENAME</th>
-                <th scope="col">LASTTIME </th>
+                <th scope="col">RMAUPDATED</th> -->
+                <!-- <th scope="col">DEVICENAME</th>
+                <th scope="col">LASTTIME </th> -->
                 <th scope="col">NETCIID</th>
+                <th scope="col">NETCIID</th>
+                <th scope="col">所属数据中心</th>
+                <th scope="col">NETCIID</th>
+                <th scope="col">NETCIID</th>
+                <th scope="col">责任人</th>
+                <th scope="col">NETCIID</th>
+                <th scope="col">机柜编号</th>
+                <th scope="col">结束U位</th>
+                <th scope="col">起始U位</th>
+                <th scope="col">NETCIID</th>
+                <th scope="col">NETCIID</th>
+                <th scope="col">采购合同</th>
+                <th scope="col">NETCIID</th>
+                <th scope="col">目前服务商</th>
+                <th scope="col">采购金额</th>
+                <th scope="col">购置时间</th>
+                <th scope="col">启用日期</th>
+                <th scope="col">维保开始时间</th>
+                <th scope="col">维保结束时间</th>
+                <th scope="col">FTL</th>
             </tr>
         </thead>
 
@@ -76,23 +98,23 @@
             <!-- jinja2语法 -->
             {% for u in assets %}
             <tr>
-                <td>{{ u[0] }}</td>
-                <td>{{ u[1] }}</td>
-                <td>{{ u[2] }}</td>
+                <!-- <td>{{ u[0] }}</td> -->
+                <!-- <td>{{ u[1] }}</td>
+                <td>{{ u[2] }}</td> -->
                 <td>{{ u[3] }}</td>
-                <td>{{ u[4] }}</td>
-                <td>{{ u[5] }}</td>
-                <td>{{ u[6] }}</td>
-                <td>{{ u[7] }}</td>
-                <td>{{ u[8] }}</td>
-                <td>{{ u[9] }}</td>
-                <td>{{ u[10] }}</td>
-                <td>{{ u[11] }}</td>
-                <td>{{ u[12] }}</td>
-                <td>{{ u[13] }}</td>
-                <td>{{ u[14] }}</td>
                 <td>{{ u[15] }}</td>
-                <td>{{ u[16] }}</td>
+                <!-- <td>{{ u[4] }}</td> -->
+                <td>{{ u[6] }}</td>
+                <td>{{ u[10] }}</td>
+                <!-- <td>{{ u[7] }}</td> -->
+                <td>{{ u[8] }}</td>
+                <td>{{ u[5] }}</td>
+                <td>{{ u[9] }}</td>
+                <!-- <td>{{ u[11] }}</td>
+                <td>{{ u[12] }}</td>
+                <td>{{ u[13] }}</td> -->
+                <td>{{ u[14] }}</td>
+                <!-- <td>{{ u[16] }}</td>
                 <td>{{ u[17] }}</td>
                 <td>{{ u[18] }}</td>
                 <td>{{ u[19] }}</td>
@@ -100,28 +122,45 @@
                 <td>{{ u[21] }}</td>
                 <td>{{ u[22] }}</td>
                 <td>{{ u[23] }}</td>
-                <td>{{ u[24] }}</td>
+                <td>{{ u[24] }}</td> -->
                 <td>{{ u[25] }}</td>
-                <td>{{ u[26] }}</td>
+                <!-- <td>{{ u[26] }}</td>
                 <td>{{ u[27] }}</td>
-                <td>{{ u[28] }}</td>
                 <td>{{ u[29] }}</td>
-                <td>{{ u[30] }}</td>
-                <td>{{ u[31] }}</td>
-                <td>{{ u[32] }}</td>
-                <td>{{ u[33] }}</td>
-                <td>{{ u[34] }}</td>
+                <td>{{ u[30] }}</td> -->
+                <!-- <td>{{ u[31] }}</td>
+                <td>{{ u[32] }}</td> -->
+                <!-- <td>{{ u[34] }}</td>
                 <td>{{ u[35] }}</td>
-                <td>{{ u[36] }}</td>
-                <td>{{ u[37] }}</td>
-                <td>{{ u[38] }}</td>
-                <td>{{ u[39] }}</td>
+                <td>{{ u[36] }}</td> -->
+                <!-- <td>{{ u[38] }}</td>
+                <td>{{ u[39] }}</td> -->
                 <td>{{ u[40] }}</td>
+                <td>{{ u[42] }}</td>
+                <td>{{ u[43] }}</td>
+                <td>{{ u[45] }}</td>
+                <td>{{ u[47] }}</td>
+                <td>{{ u[48] }}</td>
+                <td>{{ u[49] }}</td>
+                <td>{{ u[52] }}</td>
+                <td>{{ u[50] }}</td>
+                <td>{{ u[41] }}</td>
+                <td>{{ u[51] }}</td>
+                <td>{{ u[53] }}</td>
+                <td>{{ u[54] }}</td>
+                <td>{{ u[55] }}</td>
+                <td>{{ u[56] }}</td>
+                <td>{{ u[46] }}</td>
+                <td>{{ u[57] }}</td>
+                <td>{{ u[33] }}</td>
+                <td>{{ u[44] }}</td>
+                <td>{{ u[37] }}</td>
+                <td>{{ u[28] }}</td>
             </tr>
             {% endfor %}
         </tbody>
     </table>
-  
+
 </body>
 
 <!-- 导出按钮逻辑 -->
